@@ -1,6 +1,6 @@
 import { PropTypes } from 'prop-types';
 import {
-  Container, Row, Col, Image, Button,
+  Container, Row, Col, Image, Button, Badge,
 } from 'react-bootstrap';
 
 const RocketList = ({
@@ -25,7 +25,19 @@ const RocketList = ({
         </Col>
         <Col>
           <h2>{rocketName}</h2>
-          <p>{description}</p>
+          <p>
+            <span>
+              {reserved ? (
+                <Badge pill bg="info">
+                  Reserved
+                </Badge>
+              ) : (
+                ''
+              )}
+            </span>
+            {' '}
+            {description}
+          </p>
           <Button
             variant={reserved ? 'light' : 'primary'}
             onClick={reserved ? cancel : reserve}
