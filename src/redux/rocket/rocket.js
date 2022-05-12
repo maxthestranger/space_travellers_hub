@@ -15,6 +15,27 @@ export const fetchRockets = () => async (dispatch) => {
 };
 
 // TODO: reducer to go here
+export default function reducer(state = [], action) {
+  switch (action.type) {
+    case FETCH_ROCKET:
+      return action.rockets;
+
+    case RESERVE_ROCKET:
+      return state.map((rocket) => {
+        if (rocket.id !== action.id) return rocket;
+        return { ...rocket, reserved: true };
+      });
+
+    case CANCEL_ROCKET:
+      return state.map((rocket) => {
+        if (rocket.id !== action.id) return rocket;
+        return { ...rocket, reserved: false };
+      });
+
+    default:
+      return state;
+  }
+}
 
 // action creators
 export function reserveRocket({ id }) {
