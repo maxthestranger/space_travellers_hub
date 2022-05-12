@@ -1,28 +1,68 @@
+import { PropTypes } from 'prop-types';
 import {
-  Container, Row, Col, Image, Button,
+  Container, Row, Col, Image, Button, Badge,
 } from 'react-bootstrap';
-import rocket from '../assets/images/rocket.png';
 
-const RocketList = () => (
-  <li>
+const RocketList = ({
+  rocketName,
+  description,
+  flckrImg,
+  reserved,
+  reserve,
+  cancel,
+}) => (
+  <li className="py-3 my-3">
     <Container>
       <Row>
         <Col xs lg={3}>
-          <Image src={rocket} width="100%" height="auto" rounded alt="image" />
+          <Image
+            src={flckrImg}
+            width="100%"
+            height="auto"
+            rounded
+            alt="image"
+          />
         </Col>
         <Col>
-          <h2>Falcon 1</h2>
+          <h2>{rocketName}</h2>
           <p>
-            The Rockets section displays a list of all available SpaceX rockets.
-            Users can book each rocket by clicking the reservation button or
-            cancel the previously made booking. The same layout is used to form
-            the Dragons section added only if your team has 3 members.
+            <span>
+              {reserved ? (
+                <Badge pill bg="info">
+                  Reserved
+                </Badge>
+              ) : (
+                ''
+              )}
+            </span>
+            {' '}
+            {description}
           </p>
-          <Button variant="primary">Reserve Rocket</Button>
+          <Button
+            variant={reserved ? 'light' : 'primary'}
+            onClick={reserved ? cancel : reserve}
+          >
+            {reserved ? 'Cancel Rocket' : 'Reserve Rocket'}
+          </Button>
         </Col>
       </Row>
     </Container>
   </li>
 );
+
+RocketList.propTypes = {
+  rocketName: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  flckrImg: PropTypes.string.isRequired,
+  reserved: PropTypes.bool,
+  reserve: PropTypes.func,
+  cancel: PropTypes.func,
+};
+
+RocketList.defaultProps = {
+  reserve: null,
+  cancel: null,
+  reserved: false,
+};
 
 export default RocketList;
