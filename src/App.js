@@ -8,12 +8,16 @@ import Profile from './pages/profile';
 import {
   fetchRockets,
 } from './redux/rocket/rocket';
+import {
+  fetchMissions,
+} from './redux/mission/mission';
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(fetchRockets());
+    dispatch(fetchMissions());
   }, []);
   return (
     <BrowserRouter>
