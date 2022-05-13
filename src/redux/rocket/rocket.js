@@ -2,7 +2,7 @@ import spaceAPI from '../../api/spaceAPI';
 
 // actions
 const FETCH_ROCKET = 'FETCH_ROCKET';
-const RESERVE_ROCKET = 'RESERVE_MISSION';
+const RESERVE_ROCKET = 'RESERVE_ROCKET';
 const CANCEL_ROCKET = 'CANCEL_ROCKET';
 
 // fetch rockets
