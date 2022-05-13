@@ -17,7 +17,7 @@ const Menubar = () => (
         </h1>
       </Col>
       <Col>
-        <Nav className="justify-content-end py-3 my-3" activeKey="/home">
+        <Nav className="justify-content-end py-3 my-3">
           <Nav.Item>
             <NavLink
               to="/"

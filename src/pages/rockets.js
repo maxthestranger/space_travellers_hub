@@ -1,24 +1,17 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import {
-  reserveRocket,
-  cancelRocket,
-  fetchRockets,
-} from '../redux/rocket/rocket';
+import { reserveRocket, cancelRocket } from '../redux/rocket/rocket';
+import Menubar from '../components/Menu';
 import RocketList from '../components/rocketList';
 
 const Rockets = () => {
   const dispatch = useDispatch();
   const rockets = useSelector((state) => state.rockets);
 
-  useEffect(() => {
-    dispatch(fetchRockets());
-  }, []);
-
   return (
     <>
       {/* TODO: Header here */}
+      <Menubar />
 
       <Container className="px-5">
         <Row>
