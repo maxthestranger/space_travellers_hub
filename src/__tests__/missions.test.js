@@ -9,6 +9,16 @@ import rocketReducer, {
 
 const testData = {
   initialState: [],
+  populatedState0: [
+    {
+      mission_id: 1,
+      reserved: false,
+    },
+    {
+      mission_id: 2,
+      reserved: false,
+    },
+  ],
   populatedState: [
     {
       id: 1,
@@ -26,6 +36,16 @@ const testData = {
     },
     {
       id: 2,
+      reserved: true,
+    },
+  ],
+  populatedState3: [
+    {
+      mission_id: 1,
+      reserved: false,
+    },
+    {
+      mission_id: 2,
       reserved: true,
     },
   ],
@@ -52,14 +72,7 @@ describe('action creators', () => {
 
 describe('reducers', () => {
   test('return an array of object with reserved key true for id mission', () => {
-    expect(missionReducer(testData.populatedState, { type: 'JOIN_MISSION', id: 2 })).toEqual(testData.populatedState.reduce((p, c) => {
-      if (c.id !== 2) {
-        p.push(c);
-        return p;
-      }
-      p.push({ ...c, reserved: true });
-      return p;
-    }, []));
+    expect(missionReducer(testData.populatedState0, { type: 'JOIN_MISSION', id: 2 })).toEqual(testData.populatedState3);
   });
 
   test('return an array of object with reserved key true for id rocket', () => {
@@ -74,7 +87,7 @@ describe('reducers', () => {
   });
 
   test('return an array of object with reserved key false for id mission', () => {
-    expect(missionReducer(testData.populatedState2, { type: 'LEAVE_MISSION', id: 2 })).toEqual(testData.populatedState);
+    expect(missionReducer(testData.populatedState3, { type: 'LEAVE_MISSION', id: 2 })).toEqual(testData.populatedState0);
   });
 
   test('return an array of object with reserved key false for id rocket', () => {
