@@ -22,13 +22,13 @@ export default function reducer(state = [], action) {
 
     case JOIN_MISSION:
       return state.map((mission) => {
-        if (mission.id !== action.id) return mission;
+        if (mission.mission_id !== action.id) return mission;
         return { ...mission, reserved: true };
       });
 
     case LEAVE_MISSION:
       return state.map((mission) => {
-        if (mission.id !== action.id) return mission;
+        if (mission.mission_id !== action.id) return mission;
         return { ...mission, reserved: false };
       });
 

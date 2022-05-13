@@ -18,7 +18,7 @@ const Profile = () => {
       <Container className="px-4">
         <Row>
           <Col>
-            <h3 className="mb-4">My Missions</h3>
+            <h3 className="mb-4">My Rockets</h3>
             <ListGroup>
               {rockets && rockets.map((rocket) => (
                 <ListGroup.Item key={rocket.id}>{rocket.rocket_name}</ListGroup.Item>
@@ -26,10 +26,10 @@ const Profile = () => {
             </ListGroup>
           </Col>
           <Col>
-            <h3 className="mb-4">My Rockets</h3>
+            <h3 className="mb-4">My Missions</h3>
             <ListGroup>
               {missions && missions.map((mission) => (
-                <ListGroup.Item key={mission.mission_id}>{mission.rocket_name}</ListGroup.Item>
+                <ListGroup.Item key={mission.mission_id}>{mission.mission_name}</ListGroup.Item>
               ))}
             </ListGroup>
           </Col>
